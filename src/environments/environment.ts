@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   googleAuthURL: 'http://localhost:9100/google/authorization',
-  googleAuthURL2: 'http://localhost:9100/google/authorization2',
+  studentProfile: 'http://localhost:9100/student/profile',
 };
 
 /*

@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 // import { Token } from '../student/student';
-import { Token } from 'src/app/services/student/student';
+import { StudentProfile, Token } from 'src/app/services/student/student';
 
 @Injectable({
   providedIn: 'root'
@@ -13,34 +13,17 @@ import { Token } from 'src/app/services/student/student';
 
 export class ProfileService {
 
-  token: Token = {
-    accessToken: '',
-    isAuth: false,
-  };
+  studentProfile: StudentProfile;
 
   constructor(private http: HttpClient) { }
 
-  googleAuthCall(idToken: string, stdCode: string): Observable<Token> {
-    const headers = new HttpHeaders({})
-    const body = { 'std_code': stdCode, };
-    return this.http.post<Token>(`${environment.googleAuthURL2}`, body,{headers}).pipe(
-      tap(res => {
-        this.setAccessToken(res.accessToken);
-      }),
-      catchError(err => {
-        return throwError(err);
-      })
-    );
-  }
+  fetchStudentProfile(stdCode: string): Observable<StudentProfile> {
 
-  async getAccessToken(): Promise<string> {
-    const { value } = await Storage.get({ key: 'accessToken' });
-    const access_token = value;    
-    return access_token;
-  }
+    const playLoad = {
+      'std_code': stdCode
+    };
+    return this.http.post<StudentProfile>(`${environment.studentProfile}`, playLoad);
 
-  async setAccessToken(accessToken: string) {
-    await Storage.set({ key: 'accessToken', value: accessToken });
   }
 
 

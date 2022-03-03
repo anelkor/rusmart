@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { GoogleAuthService } from '../services/google/google-auth.service';
 import { GoogleAuthResponse } from '../services/google/googleAuth';
 import { Router } from '@angular/router';
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-home',
@@ -25,9 +26,7 @@ export class HomePage {
     const idToken = this.googleUser.authentication.idToken;
     const stdCode = this.googleUser.email.substring(0, 10);
     this.googleAuthService.googleAuth(idToken, stdCode).subscribe(response => {
-      this.googleAuthService.getAccessToken().then(accessToken => {
-        this.router.navigate(['/profile']);
-      });
+      this.router.navigate(['/profile']);
     });
   }
 

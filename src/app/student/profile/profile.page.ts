@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ProfileService } from 'src/app/services/student/profile/profile.service';
-import { Token } from 'src/app/services/student/student';
-import { environment } from 'src/environments/environment';
+import { StudentProfile, Token } from 'src/app/services/student/student';
 import { GoogleAuthService } from '../../services/google/google-auth.service';
 
 @Component({
@@ -14,20 +13,22 @@ import { GoogleAuthService } from '../../services/google/google-auth.service';
 })
 export class ProfilePage implements OnInit {
 
-  token: Token = {
-    accessToken: '',
-    isAuth: false,
-  };
+  studentProfile: StudentProfile;
 
-  constructor(private http: HttpClient, private profileService: ProfileService, private router: Router) { }
+  constructor(private http: HttpClient, 
+    private profileService: ProfileService, 
+    private router: Router,
+    private googleAuth: GoogleAuthService) { }
 
   ngOnInit() {
-    console.log("this here....");
-    this.profileService.googleAuthCall("1234_TOKEN", "6299999991").subscribe(response => {
-      this.profileService.getAccessToken().then(accessToken => {
-        // this.router.navigate(['/profile']);
-        console.log("hhhhhhhh")
-      });
+    this.fetchStudentProfile();    
+  }
+
+  private fetchStudentProfile() {
+    const stdCode = this.googleAuth.getStudentCode();
+    this.profileService.fetchStudentProfile(stdCode).subscribe(response => {
+      this.studentProfile = response;
+      console.log(this.studentProfile)
     });
   }
 

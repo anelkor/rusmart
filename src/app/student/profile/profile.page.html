@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>profile</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  Hello world...
+<ion-content *ngIf="studentProfile">
+    {{studentProfile | json}}
 </ion-content>
