@@ -4,7 +4,6 @@ import { Storage } from '@capacitor/storage';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-// import { Token } from '../student/student';
 import { StudentProfile, Token } from 'src/app/services/student/student';
 
 @Injectable({

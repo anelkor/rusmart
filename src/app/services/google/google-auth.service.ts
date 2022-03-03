@@ -92,32 +92,4 @@ export class GoogleAuthService {
     this.revokeIsAuthenticated();
     this.revokeAccessToken();
   }
-
-  //   async setGoogleIdToken(idToken: string) {
-  //     await Storage.set({ key:'idToken', value: idToken});
-  //   }
-
-  //   async getGoogleIdToken(): Promise<string> {
-  //     const idToken = await Storage.get({ key: 'idToken'});
-  //     return idToken.value;
-  //   }
-
-  //   async setAccessToken(accessToken: string) {
-  //     await Storage.set({ key: 'accessToken', value: accessToken});
-  //   }
-
-  //   async getAccessToken() {
-  //     const accessToken = await Storage.get({ key: 'accessToken' });
-  //     return accessToken.value;
-  // }
-
-  //   async setIsAuthenticated(isAuth: boolean) {
-  //     await Storage.set({ key: 'isAuth', value: JSON.stringify(isAuth)});
-  //   }
-
-  //   async getIsAuthenticated(): Promise<string> {
-  //     const isAuth = await Storage.get({ key: 'isAuth'});
-  //     return isAuth.value;
-  //   }
-
 }
