@@ -1,18 +1,39 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>
-            Google Authentication
-        </ion-title>
-    </ion-toolbar>
+    <div class="home-bg-header-wrapper">
+        <div class="home-bg-header">
+            <img src="../../assets/home/background-home.png" alt="">
+        </div>
+        <div class="home-logo-header">
+            <img src="../../assets/home/vs.png" alt="">
+        </div>
+        <div class="home-text-logo-header">
+            <img src="../../assets/home/home-text-logo.png" alt="">
+        </div>
+    </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <div id="container">
-        <ion-button (click)="googleSignup()">Sign in</ion-button>
-        <ion-card>
-            <ion-card-content>
-                {{ userInfo | json}}
-            </ion-card-content>
-        </ion-card>
+    <div class="btn-google-signin-wrapper">
+        <button class="btn-google-signin" (click)="googleSignup()">
+            <img src="../../assets/home/Group8.png" alt="">
+        </button>
+    </div>
+    <div class="home-menu-wrapper">
+        <div class="home-menu-items">
+            <img class="img-calendar" src="../../assets/home/calendar.png" alt="">
+            <img class="img-text-calendar" src="../../assets/home/text-calendar.png" alt="">
+        </div>
+        <div class="home-menu-items">
+            <img class="img-news3" src="../../assets/home/news3.png" alt="">
+            <img class="img-text-news3" src="../../assets/home/text-news3.png" alt="">
+        </div>
+        <div class="home-menu-items">
+            <img class="img-mr30" src="../../assets/home/mr30.png" alt="">
+            <img class="img-text-mr30" src="../../assets/home/text-mr30.png" alt="">
+        </div>
+        <div class="home-menu-items">
+            <img class="img-aboutus4" src="../../assets/home/aboutus4.png" alt="">
+            <img class="img-text-aboutus4" src="../../assets/home/text-aboutus4.png" alt="">
+        </div>
     </div>
 </ion-content>
