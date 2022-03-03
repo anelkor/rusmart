@@ -1,0 +1,21 @@
+{
+    "appId": "google.authen.oauth2",
+    "appName": "googleAuthenOauth2",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        }
+    },
+    "GoogleAuth": {
+        "scopes": [
+            "profile",
+            "email"
+        ],
+        "serverClientId": "363422628997-i7g59cl66evtb0m9o2j3c4tmb0c2rskp.apps.googleusercontent.com",
+        "forceCodeForRefreshToken": true
+    },
+    "cordova": {}
+}

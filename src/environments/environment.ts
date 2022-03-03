@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  googleAuthURL: 'http://localhost:9100/google/authorization',
+  googleAuthURL2: 'http://localhost:9100/google/authorization2',
 };
 
 /*
