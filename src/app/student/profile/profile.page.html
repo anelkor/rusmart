@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
         <ion-title>profile</ion-title>
     </ion-toolbar>
@@ -7,4 +7,72 @@
 
 <ion-content *ngIf="studentProfile">
     {{studentProfile | json}}
+</ion-content> -->
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid *ngIf="studentProfile">
+        <ion-row id="header-main-bg-tag">
+            <ion-col size="12" size-sm>
+                <ion-row>
+                    <ion-col size="3" size-sm>
+                        <img src="https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_960_720.png" alt="" />
+                    </ion-col>
+                    <ion-col size="9" size-sm id="name-thai-tag">
+                        <ion-text>{{studentProfile.NAME_THAI}}</ion-text> <br>
+                        <ion-text id="name-eng-tag">{{studentProfile.NAME_ENG}} </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row id="box-inner-tag">
+                    <ion-col size="12" size-sm>
+                        <ion-text> <i class="fas fa-key"></i> {{studentProfile.FACULTY_NAME_THAI}}<br> {{studentProfile.FACULTY_NAME_THAI}}
+                        </ion-text>
+                    </ion-col>
+
+                </ion-row>
+                <ion-row id="detail-student-tag">
+                    <ion-col size="4" size-sm>Code <br />{{studentProfile.STD_CODE}} </ion-col>
+                    <ion-col size="4" size-sm>Grade <br />| 1.00 |</ion-col>
+                    <ion-col size="4" size-sm>Credit <br/>{{studentProfile.WAIVED_TOTAL_CREDIT}}</ion-col>
+                </ion-row>
+
+
+            </ion-col>
+        </ion-row>
+        <ion-row id="main-body-tag">
+            <ion-col size="12" size-sm>
+                <ion-text id="topic-text"> <i class="fa fa-user"></i> ACADEMIC RECORD</ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-sm>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>คณะ: {{studentProfile.FACULTY_NAME_THAI}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>สาขา: {{studentProfile.MAJOR_NAME_THAI}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>เบอโทรศัพท์: {{studentProfile.MOBILE_TELEPHONE}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>สถานภาพ: {{studentProfile.STD_STATUS_DESC_THAI}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>เพศ: {{studentProfile.PENAL_NAME_THAI}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>วันเกิด: {{studentProfile.BIRTH_DATE}}</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
