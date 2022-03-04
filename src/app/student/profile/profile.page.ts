@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { ProfileService } from 'src/app/services/student/profile/profile.service';
 import { StudentProfile, Token } from 'src/app/services/student/student';
 import { GoogleAuthService } from '../../services/google/google-auth.service';
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -18,7 +18,8 @@ export class ProfilePage implements OnInit {
   constructor(private http: HttpClient, 
     private profileService: ProfileService, 
     private router: Router,
-    private googleAuth: GoogleAuthService) { }
+    private googleAuth: GoogleAuthService,
+    private navCtrl: NavController) { }
 
   ngOnInit() {
     this.fetchStudentProfile();    
@@ -30,6 +31,10 @@ export class ProfilePage implements OnInit {
       this.studentProfile = response;
       console.log(this.studentProfile)
     });
+  }
+
+  goToHome(){
+    this.navCtrl.navigateBack('/home');
   }
 
 }

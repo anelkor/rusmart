@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            LOGIN
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+
+            <ion-title size="large">Login
+                <div class="ion-float-right" (click)="goToHome()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+            </ion-title>
+
+
+        </ion-toolbar>
+    </ion-header>
+
+    <div id="container">
+
+
+        <div class="btn-google-signin-wrapper">
+            <button class="btn-google-signin" (click)="googleSignup()">
+            <img src="../../assets/home/Group8.png" alt="">
+        </button>
+        </div>
+        <ion-card>
+            <ion-card-content *ngIf="userInfo">
+                {{ userInfo | json}}
+            </ion-card-content>
+        </ion-card>
+        <!-- <ion-button color="light" (click)="goToProfile()" expand="block">Go to Profile</ion-button> -->
+    </div>
+</ion-content>

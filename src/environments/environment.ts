@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  googleAuthURL: 'http://localhost:9100/google/authorization',
-  studentProfile: 'http://localhost:9100/student/profile',
+  googleAuthURL: 'https://backend-services.ru.ac.th/ru-smart-api/google/authorization',
+  studentProfile: 'https://backend-services.ru.ac.th/ru-smart-api/student/profile',
+ 
+ 
 };
 
 /*

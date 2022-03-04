@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@capacitor/storage';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError ,BehaviorSubject} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { StudentProfile, Token } from 'src/app/services/student/student';
@@ -11,10 +11,14 @@ import { StudentProfile, Token } from 'src/app/services/student/student';
 })
 
 export class ProfileService {
-
+  public currentUser: Observable<StudentProfile>;
+  private currentUserSubject: BehaviorSubject<StudentProfile>;
   studentProfile: StudentProfile;
-
-  constructor(private http: HttpClient) { }
+  private user;
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<StudentProfile>(this.user);
+    this.currentUser = this.currentUserSubject.asObservable();
+   }
 
   fetchStudentProfile(stdCode: string): Observable<StudentProfile> {
 

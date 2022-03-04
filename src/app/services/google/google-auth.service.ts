@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@capacitor/storage';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError,BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Token } from '../student/student';
@@ -11,13 +11,19 @@ import { Token } from '../student/student';
   providedIn: 'root'
 })
 export class GoogleAuthService {
+  public currentUser: Observable<Token>;
+  private currentUserSubject: BehaviorSubject<Token>;
+
 
   token: Token = {
     accessToken: '',
     isAuth: false,
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.currentUserSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('isAuth')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
   googleAuth(idToken: string, stdCode: string): Observable<Token> {
 
@@ -30,6 +36,7 @@ export class GoogleAuthService {
       tap(res => {
         this.setAccessToken(res.accessToken);
         this.setIsAuthenticated(res.isAuth);
+        this.currentUserSubject.next(res);
       }),
       catchError(err => {
         return throwError(err);
@@ -66,8 +73,8 @@ export class GoogleAuthService {
     localStorage.setItem('isAuth',  JSON.stringify(isAuth));
   }
 
-  getIsAuthenticated(): string {
-    return localStorage.getItem('isAuth');
+  getIsAuthenticated(): boolean {
+    return JSON.parse(localStorage.getItem('isAuth'));
   }
 
   revokeGoogleIdToken() {

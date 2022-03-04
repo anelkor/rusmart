@@ -14,7 +14,7 @@ export class RuSmartInterceptor implements HttpInterceptor {
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const isAuth = this.googleAuth.getIsAuthenticated();
-    if (isAuth == 'true') {
+    if (isAuth == true) {
       const accessToken = this.googleAuth.getAccessToken()
       httpRequest = this.setHttpHeaders(httpRequest, accessToken);
     } else {
@@ -42,7 +42,7 @@ export class RuSmartInterceptor implements HttpInterceptor {
 
   private signOut() {
     this.googleAuth.signOut();
-    this.router.navigate(['/home'])
+  //  this.router.navigate(['/home'])
   }
 
 }

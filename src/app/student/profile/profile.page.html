@@ -3,6 +3,7 @@
         <ion-title>profile</ion-title>
     </ion-toolbar>
 </ion-header>
+<ion-button color="light" (click)="goToHome()" expand="block">Go to Home</ion-button>
 
 <ion-content *ngIf="studentProfile">
     {{studentProfile | json}}
