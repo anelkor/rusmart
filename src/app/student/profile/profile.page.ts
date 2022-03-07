@@ -6,6 +6,8 @@ import { ProfileService } from 'src/app/services/student/profile/profile.service
 import { StudentProfile, Token } from 'src/app/services/student/student';
 import { GoogleAuthService } from '../../services/google/google-auth.service';
 import { NavController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -29,12 +31,16 @@ export class ProfilePage implements OnInit {
     const stdCode = this.googleAuth.getStudentCode();
     this.profileService.fetchStudentProfile(stdCode).subscribe(response => {
       this.studentProfile = response;
-      console.log(this.studentProfile)
+      console.table(this.studentProfile)
     });
   }
 
   goToHome(){
     this.navCtrl.navigateBack('/home');
+  }
+
+  signOut(){
+    this.googleAuth.signOut();
   }
 
 }

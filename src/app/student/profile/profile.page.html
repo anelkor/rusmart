@@ -10,14 +10,15 @@
 </ion-content> -->
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-buttons>
+            <ion-back-button text="" icon="chevron-back-outline" (click)="goToHome()"></ion-back-button>
+
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-grid *ngIf="studentProfile">
+<ion-content *ngIf="studentProfile">
+    <ion-grid>
         <ion-row id="header-main-bg-tag">
             <ion-col size="12" size-sm>
                 <ion-row>
@@ -75,4 +76,6 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+    <ion-button expand="full" color="warning" (click)="signOut()">ออกจากระบบ</ion-button>
+
 </ion-content>

@@ -98,5 +98,7 @@ export class GoogleAuthService {
     this.revokeStudentCode();
     this.revokeIsAuthenticated();
     this.revokeAccessToken();
+    this.currentUserSubject.next(null);
+    window.location.reload();
   }
 }
